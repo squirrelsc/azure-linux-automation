@@ -962,11 +962,11 @@ def setup_Daytrader_singleVM():
 	if "exit" in output:
 		RunLog.info( output)
 		output = exec_multi_cmds_local_sudo(("sed -i 's_^exit 0_sh /opt/IBM/WebSphere/AppServerCommunityEdition/bin/startup.sh\\nexit 0_' "+startup_file,"\n"))
-		Run("echo '"+vm_password+"' | sudo -S chmod 777 '"+startup_file+"'")
+		Run("echo '"+vm_password+"' | sudo -S chmod 755 '"+startup_file+"'")
 	else:
 		RunLog.info( "exit not found")
 		exec_multi_cmds_local_sudo(('echo "sh /opt/IBM/WebSphere/AppServerCommunityEdition/bin/startup.sh" >>  '+startup_file,'\n'))
-		Run("echo '"+vm_password+"' | sudo -S chmod 777 '"+startup_file+"'")
+		Run("echo '"+vm_password+"' | sudo -S chmod 755 '"+startup_file+"'")
 
 def update_python_and_install_pexpect():
 	python_install_commands = (	"wget --no-check-certificate http://python.org/ftp/python/2.7.2/Python-2.7.2.tgz", \
@@ -1100,11 +1100,11 @@ def RunTest():
 				output = Run('cat '+startup_file+'   | grep "^exit"')				
 				if "exit" in output:					
 					output = exec_multi_cmds_local_sudo(("sed -i 's_^exit 0_sh /opt/IBM/WebSphere/AppServerCommunityEdition/bin/startup.sh\\nexit 0_' "+startup_file,"\n"))					
-					Run("echo '"+vm_password+"' | sudo -S chmod 777 '"+startup_file+"'")
+					Run("echo '"+vm_password+"' | sudo -S chmod 755 '"+startup_file+"'")
 				else:
 					RunLog.info( "exit not found")
 					exec_multi_cmds_local_sudo(('echo "sh /opt/IBM/WebSphere/AppServerCommunityEdition/bin/startup.sh" >>  '+startup_file,'\n'))
-					Run("echo '"+vm_password+"' | sudo -S chmod 777 '"+startup_file+"'")
+					Run("echo '"+vm_password+"' | sudo -S chmod 755 '"+startup_file+"'")
 				RunLog.info( "Rebooting the frontend....\n")
 				RunLog.info( exec_multi_cmds_local_sudo(["reboot"]))
 			elif len(sys.argv) < 3:

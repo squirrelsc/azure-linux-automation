@@ -74,7 +74,7 @@ then
 	echo "## Configuring mariadb" >> $LOGFILE
 	mysql_datadir="$mountdir/mysql"
 	mkdir $mysql_datadir
-	chmod 777 -R $mysql_datadir
+	chmod 755 -R $mysql_datadir
 	cp -rf /var/lib/mysql/* $mysql_datadir
 #	sed -i  "s#datadir.*#datadir         = $mysql_datadir#" $mysql_cnf_file
 	sed -i  "s/\(.(*datadir.*\)/#\1/" $mysql_cnf_file

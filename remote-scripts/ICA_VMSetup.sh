@@ -314,7 +314,7 @@ dbgprint "Preparing the VHD for ICA..."
 #installing icadaemon, git and lcov
      
 	tar -xmf icatest-0.1.tar.gz
-	chmod 777 ./icatest-0.1/setup.py
+	chmod 755 ./icatest-0.1/setup.py
 	dbgprint "Installing Icadaemon.."
    	cd ./icatest-0.1
 	python setup.py install  
